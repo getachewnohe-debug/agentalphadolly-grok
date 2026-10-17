@@ -1,68 +1,29 @@
-# Agent Alpha Dolly — Grok Agent
+# AgentAlphaDolly X mention-reply bot
 
-**Grok-powered agent** with native GitHub integration for the Agent Alpha Dolly brand.
+This branch adds a minimal TypeScript bot that polls X (Twitter) mentions and replies using an LLM backend.
 
-Built on [xAI Grok](https://x.ai) + GitHub API.
+Features
+- Polls mentions for the configured bot user
+- Uses an LLM (OpenAI by default) to generate concise replies
+- Environment-driven configuration and safety limits
 
-## Features
+Setup (local)
+1. Copy `.env.example` to `.env` and fill in your Twitter and LLM credentials.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run in dev mode:
+   ```bash
+   npm run dev
+   ```
 
-- 🤖 **Grok chat agent** — conversational interface powered by Grok
-- 💻 **GitHub tools** — list issues, create issues, comment on PRs, review code, search repos
-- 🔄 **Workflow automation** — triage issues, suggest labels, draft PR descriptions
-- 🔒 **Secure** — uses environment variables for xAI + GitHub tokens
+Notes
+- Do NOT commit secrets. Use repository secrets for CI or deployment.
+- Test with a non-production bot account first.
+- For production, deploy to a process manager or serverless platform and store secrets securely.
 
-## Quick Start
-
-### 1. Install
-
-```bash
-npm install
-# or
-pip install -r requirements.txt
-```
-
-### 2. Environment
-
-Copy `.env.example` → `.env` and fill in:
-
-```env
-XAI_API_KEY=your_xai_api_key
-GITHUB_TOKEN=your_github_pat_or_app_token
-GITHUB_OWNER=getachewnohe-debug
-GITHUB_REPO=Agent-alpha-dolly   # default target repo
-```
-
-### 3. Run the agent
-
-```bash
-npm run agent
-# or
-python agent.py
-```
-
-## Project Structure
-
-```
-agentalphadolly-grok/
-├── src/
-│   ├── agent.ts          # Main Grok agent loop
-│   ├── tools/
-│   │   ├── github.ts      # GitHub tool implementations
-│   │   └── index.ts
-│   └── config.ts
-├── .env.example
-├── package.json
-└── README.md
-```
-
-## Related Repos
-
-| Repo | Purpose |
-|------|---------|
-| [Agent-alpha-dolly](https://github.com/getachewnohe-debug/Agent-alpha-dolly) | Brand / core |
-| [agentalphadolly-github-action](https://github.com/getachewnohe-debug/agentalphadolly-github-action) | Grok GitHub Action |
-| [agentalphadollyslack-agent](https://github.com/getachewnohe-debug/agentalphadollyslack-agent) | Slack agent (private) |
-
-## License
-
-MIT
+Next steps
+- Add webhook-based streaming instead of polling for lower latency.
+- Add moderation/blacklist filtering and logging to a monitoring sink.
+- Integrate GitHub webhooks to post release/PR notifications to X.

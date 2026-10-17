@@ -1,24 +1,19 @@
 {
-  "name": "agentalphadolly-grok",
+  "name": "agentalphadolly-x-bot",
   "version": "0.1.0",
-  "description": "Agent Alpha Dolly — Grok (xAI) powered agent with GitHub integration",
-  "type": "module",
-  "main": "src/agent.ts",
+  "private": true,
   "scripts": {
-    "agent": "tsx src/agent.ts",
-    "dev": "tsx watch src/agent.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
   },
   "dependencies": {
-    "@octokit/rest": "^21.0.0",
-    "dotenv": "^16.4.5",
-    "openai": "^4.67.0"
+    "twitter-api-v2": "^1.15.0",
+    "dotenv": "^16.0.0",
+    "node-fetch": "^3.3.1"
   },
   "devDependencies": {
-    "tsx": "^4.19.0",
-    "typescript": "^5.6.0",
-    "@types/node": "^22.0.0"
-  },
-  "keywords": ["grok", "xai", "agent", "github", "agent-alpha-dolly"],
-  "license": "MIT"
+    "typescript": "^5.2.2",
+    "ts-node-dev": "^2.0.0"
+  }
 }
